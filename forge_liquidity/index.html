@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="FrenoCero convierte inventario, horas y facturas en liquidacion inmediata para talleres."
+    />
+    <title>FrenoCero | Liquidacion inmediata</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient--left"></div>
+    <div class="ambient ambient--right"></div>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-group">
+          <div class="brand-mark">
+            <img
+              class="brand-mark__image"
+              src="./assets/frenocero-logo.jpeg"
+              alt="Logo de FrenoCero"
+            />
+          </div>
+          <div>
+            <p class="eyebrow">Workshop finance cockpit</p>
+            <h1>FrenoCero, Liquidacion inmediata</h1>
+          </div>
+        </div>
+        <div class="topbar__stats">
+          <div class="header-chip">
+            <span>Disponible</span>
+            <strong id="header-liquidity">US$ 0</strong>
+          </div>
+          <div class="header-chip header-chip--ghost" id="status-pill">
+            Demo local
+          </div>
+        </div>
+      </header>
+
+      <div class="layout">
+        <aside class="sidebar">
+          <p class="sidebar__label">Navegacion</p>
+          <nav class="sidebar__nav" id="desktop-nav" aria-label="Navegacion principal"></nav>
+          <section class="sidebar__panel">
+            <p class="eyebrow">Siguiente jugada</p>
+            <h2 id="sidebar-recommendation-title">Cargando</h2>
+            <p id="sidebar-recommendation-copy">
+              Estamos leyendo los activos disponibles para sugerir la mejor accion.
+            </p>
+            <button class="btn btn--secondary" type="button" data-action="jump-wallet">
+              Simular adelanto
+            </button>
+          </section>
+        </aside>
+
+        <main class="main-content">
+          <section class="view is-active" data-view="dashboard" aria-labelledby="dashboard-title">
+            <div class="section-intro">
+              <div>
+                <p class="eyebrow">Panel</p>
+                <h2 id="dashboard-title">Liquidez operativa en tiempo real</h2>
+                <p class="section-copy">
+                  Ahora el sistema funciona como una cabina real: Fondo de garantia, caja y
+                  movimientos se actualizan juntos automaticamente.
+                </p>
+              </div>
+              <div class="section-intro__actions">
+                <button class="btn" type="button" data-action="switch-view" data-view="wallet">
+                  Solicitar adelanto
+                </button>
+                <button
+                  class="btn btn--ghost"
+                  type="button"
+                  data-action="switch-view"
+                  data-view="inventory"
+                >
+                  Revisar activos
+                </button>
+              </div>
+            </div>
+            <div id="dashboard-content" class="view-content"></div>
+          </section>
+
+          <section class="view" data-view="inventory" aria-labelledby="inventory-title">
+            <div class="section-intro">
+              <div>
+                <p class="eyebrow">Inventario</p>
+                <h2 id="inventory-title">Activos preparados</h2>
+                <p class="section-copy">
+                  Busca por SKU, marca o modelo, y tokeniza repuestos sin salir de la pantalla.
+                </p>
+              </div>
+              <div class="section-intro__actions">
+                <button class="btn" type="button" data-action="switch-view" data-view="wallet">
+                  Ir a caja
+                </button>
+              </div>
+            </div>
+            <div id="inventory-content" class="view-content"></div>
+          </section>
+
+          <section class="view" data-view="capacity" aria-labelledby="capacity-title">
+            <div class="section-intro">
+              <div>
+                <p class="eyebrow">Capacidad</p>
+                <h2 id="capacity-title">Horas comprometidas y cuentas por cobrar</h2>
+                <p class="section-copy">
+                  Esta vista combina capacidad futura y facturas para que el taller pueda apalancar
+                  trabajo ya vendido.
+                </p>
+              </div>
+              <div class="section-intro__actions">
+                <button class="btn" type="button" data-action="switch-view" data-view="dashboard">
+                  Volver al panel
+                </button>
+              </div>
+            </div>
+            <div id="capacity-content" class="view-content"></div>
+          </section>
+
+          <section class="view" data-view="wallet" aria-labelledby="wallet-title">
+            <div class="section-intro">
+              <div>
+                <p class="eyebrow">Billetera</p>
+                <h2 id="wallet-title">Caja, adelantos y repagos</h2>
+                <p class="section-copy">
+                  Ya no es una pantalla linda nomas: podes pedir un adelanto, pagarlo y ver el
+                  impacto en la linea disponible.
+                </p>
+              </div>
+              <div class="section-intro__actions">
+                <button class="btn btn--ghost" type="button" data-action="reset-demo">
+                  Reset demo
+                </button>
+              </div>
+            </div>
+            <div id="wallet-content" class="view-content"></div>
+          </section>
+
+          <section class="view" data-view="stellar" aria-labelledby="stellar-title">
+            <div class="section-intro">
+              <div>
+                <p class="eyebrow">Stellar</p>
+                <h2 id="stellar-title">Tokenizacion y pagos sobre Stellar</h2>
+                <p class="section-copy">
+                  Esta capa opera directamente sobre la red: conecta la wallet, 
+                  sincroniza el pool y ejecuta liquidaciones en tiempo real.
+                </p>
+              </div>
+              <div class="section-intro__actions">
+                <button class="btn" type="button" data-action="toggle-stellar-wallet">
+                  Conectar wallet
+                </button>
+                <button class="btn btn--ghost" type="button" data-action="sync-stellar-pool">
+                  Sincronizar pool
+                </button>
+              </div>
+            </div>
+            <div id="stellar-content" class="view-content"></div>
+          </section>
+        </main>
+      </div>
+
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Navegacion movil"></nav>
+    </div>
+
+    <div class="toast" id="toast" hidden aria-live="polite"></div>
+
+    <noscript>
+      <div class="noscript-banner">
+        Esta demo necesita JavaScript para calcular liquidez, tokenizar activos y guardar cambios.
+      </div>
+    </noscript>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
